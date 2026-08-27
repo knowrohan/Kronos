@@ -392,7 +392,7 @@ def sample_from_logits(logits, temperature=1.0, top_k=None, top_p=None, sample_l
     return x
 
 
-def auto_regressive_inference(tokenizer, model, x, x_stamp, y_stamp, max_context, pred_len, clip=5, T=1.0, top_k=0, top_p=0.99, sample_count=5, verbose=False):
+def auto_regressive_inference(tokenizer, model, x, x_stamp, y_stamp, max_context, pred_len, clip=5, T=1.0, top_k=0, top_p=0.99, sample_count=5, verbose=False, return_samples=False):
     with torch.no_grad():
         x = torch.clip(x, -clip, clip)
 
@@ -470,6 +470,12 @@ def auto_regressive_inference(tokenizer, model, x, x_stamp, y_stamp, max_context
         z = tokenizer.decode(input_tokens, half=True)
         z = z.reshape(-1, sample_count, z.size(1), z.size(2))
         preds = z.cpu().numpy()
+        if return_samples:
+            # (batch, sample_count, seq_len, features) — the full Monte-Carlo
+            # distribution. Averaging below collapses it, which makes any
+            # downstream uncertainty estimate (quantiles, P(up), path
+            # agreement) impossible to compute from the public API.
+            return preds
         preds = np.mean(preds, axis=1)
 
         return preds
@@ -511,18 +517,34 @@ class KronosPredictor:
         self.tokenizer = self.tokenizer.to(self.device).eval()
         self.model = self.model.to(self.device).eval()
 
-    def generate(self, x, x_stamp, y_stamp, pred_len, T, top_k, top_p, sample_count, verbose):
+    def generate(self, x, x_stamp, y_stamp, pred_len, T, top_k, top_p, sample_count, verbose, return_samples=False):
 
         x_tensor = torch.from_numpy(np.array(x).astype(np.float32)).to(self.device)
         x_stamp_tensor = torch.from_numpy(np.array(x_stamp).astype(np.float32)).to(self.device)
         y_stamp_tensor = torch.from_numpy(np.array(y_stamp).astype(np.float32)).to(self.device)
 
         preds = auto_regressive_inference(self.tokenizer, self.model, x_tensor, x_stamp_tensor, y_stamp_tensor, self.max_context, pred_len,
-                                          self.clip, T, top_k, top_p, sample_count, verbose)
-        preds = preds[:, -pred_len:, :]
+                                          self.clip, T, top_k, top_p, sample_count, verbose, return_samples)
+        if return_samples:
+            preds = preds[:, :, -pred_len:, :]   # (B, S, pred_len, feat)
+        else:
+            preds = preds[:, -pred_len:, :]
         return preds
 
-    def predict(self, df, x_timestamp, y_timestamp, pred_len, T=1.0, top_k=0, top_p=0.9, sample_count=1, verbose=True):
+    def predict(self, df, x_timestamp, y_timestamp, pred_len, T=1.0, top_k=0, top_p=0.9, sample_count=1, verbose=True, return_samples=False):
+        """When ``return_samples=False`` (default) behaviour is unchanged: the
+        ``sample_count`` Monte-Carlo paths are averaged into one DataFrame.
+
+        With ``return_samples=True`` the full distribution is returned as a
+        list of ``sample_count`` DataFrames, one per sampled path. Use this
+        whenever you need uncertainty (quantile cones, P(close > x), sample
+        agreement): statistics computed across the returned paths are the
+        model's actual predictive distribution, whereas statistics of the
+        averaged path systematically understate uncertainty. Note that
+        truncated sampling (``top_p`` < 1) narrows every path's distribution,
+        so probability estimates should be sampled with ``top_p=1.0`` and
+        calibrated against realized outcomes before being trusted.
+        """
 
         if not isinstance(df, pd.DataFrame):
             raise ValueError("Input must be a pandas DataFrame.")
@@ -556,16 +578,21 @@ class KronosPredictor:
         x_stamp = x_stamp[np.newaxis, :]
         y_stamp = y_stamp[np.newaxis, :]
 
-        preds = self.generate(x, x_stamp, y_stamp, pred_len, T, top_k, top_p, sample_count, verbose)
+        preds = self.generate(x, x_stamp, y_stamp, pred_len, T, top_k, top_p, sample_count, verbose, return_samples)
 
         preds = preds.squeeze(0)
+        if return_samples:
+            return [pd.DataFrame(preds[s] * (x_std + 1e-5) + x_mean,
+                                 columns=self.price_cols + [self.vol_col, self.amt_vol],
+                                 index=y_timestamp)
+                    for s in range(preds.shape[0])]
         preds = preds * (x_std + 1e-5) + x_mean
 
         pred_df = pd.DataFrame(preds, columns=self.price_cols + [self.vol_col, self.amt_vol], index=y_timestamp)
         return pred_df
 
 
-    def predict_batch(self, df_list, x_timestamp_list, y_timestamp_list, pred_len, T=1.0, top_k=0, top_p=0.9, sample_count=1, verbose=True):
+    def predict_batch(self, df_list, x_timestamp_list, y_timestamp_list, pred_len, T=1.0, top_k=0, top_p=0.9, sample_count=1, verbose=True, return_samples=False):
         """
         Perform parallel (batch) prediction on multiple time series. All series must have the same historical length and prediction length (pred_len).
 
@@ -577,7 +604,10 @@ class KronosPredictor:
             T (float): Sampling temperature.
             top_k (int): Top-k filtering threshold.
             top_p (float): Top-p (nucleus sampling) threshold.
-            sample_count (int): Number of parallel samples per series, automatically averaged internally.
+            sample_count (int): Number of parallel samples per series. Averaged internally by
+                                default; pass return_samples=True to receive every sampled path.
+            return_samples (bool): If True, return List[List[pd.DataFrame]] — for each series,
+                                one DataFrame per sampled path (the full predictive distribution).
             verbose (bool): Whether to display autoregressive progress.
 
         Returns:
@@ -655,14 +685,21 @@ class KronosPredictor:
         x_stamp_batch = np.stack(x_stamp_list, axis=0).astype(np.float32) # (B, seq_len, time_feat)
         y_stamp_batch = np.stack(y_stamp_list, axis=0).astype(np.float32) # (B, pred_len, time_feat)
 
-        preds = self.generate(x_batch, x_stamp_batch, y_stamp_batch, pred_len, T, top_k, top_p, sample_count, verbose)
-        # preds: (B, pred_len, feat)
+        preds = self.generate(x_batch, x_stamp_batch, y_stamp_batch, pred_len, T, top_k, top_p, sample_count, verbose, return_samples)
+        # preds: (B, pred_len, feat), or (B, S, pred_len, feat) with return_samples
 
         pred_dfs = []
         for i in range(num_series):
-            preds_i = preds[i] * (stds[i] + 1e-5) + means[i]
-            pred_df = pd.DataFrame(preds_i, columns=self.price_cols + [self.vol_col, self.amt_vol], index=y_timestamp_list[i])
-            pred_dfs.append(pred_df)
+            if return_samples:
+                pred_dfs.append([
+                    pd.DataFrame(preds[i, s] * (stds[i] + 1e-5) + means[i],
+                                 columns=self.price_cols + [self.vol_col, self.amt_vol],
+                                 index=y_timestamp_list[i])
+                    for s in range(preds.shape[1])])
+            else:
+                preds_i = preds[i] * (stds[i] + 1e-5) + means[i]
+                pred_df = pd.DataFrame(preds_i, columns=self.price_cols + [self.vol_col, self.amt_vol], index=y_timestamp_list[i])
+                pred_dfs.append(pred_df)
 
         return pred_dfs
 
