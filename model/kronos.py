@@ -502,8 +502,8 @@ class KronosPredictor:
         
         self.device = device
 
-        self.tokenizer = self.tokenizer.to(self.device)
-        self.model = self.model.to(self.device)
+        self.tokenizer = self.tokenizer.to(self.device).eval()
+        self.model = self.model.to(self.device).eval()
 
     def generate(self, x, x_stamp, y_stamp, pred_len, T, top_k, top_p, sample_count, verbose):
 
