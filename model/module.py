@@ -29,7 +29,7 @@ class DifferentiableEntropyFunction(Function):
         grad_array = -grad_output * (torch.log(prob) + 1) / zi.numel() / ctx.K
         reord_grad = grad_array[zi.flatten()].reshape(zi.shape)
         grad_input = reord_grad.unsqueeze(-1) * zq
-        return grad_input, None, None, None, None
+        return grad_input, None, None, None
 
 
 def codebook_entropy(zq, basis, K, eps=1e-4):
@@ -106,6 +106,7 @@ class BinarySphericalQuantizer(nn.Module):
         else:
             used_codes = None
 
+        avg_prob = None
         if self.soft_entropy:
             persample_entropy, cb_entropy, avg_prob = self.soft_entropy_loss(z)
             entropy_penalty = self.gamma0 * persample_entropy - self.gamma * cb_entropy
@@ -206,7 +207,7 @@ class BinarySphericalQuantizer(nn.Module):
         q_scale = 1. / (self.embed_dim ** 0.5) if self.l2_norm else 1.
         z_q = z_q * q_scale
         if self.input_format == 'bchw':
-            h, w = int(z_q.shape[1] ** 0.5)
+            h = w = int(z_q.shape[1] ** 0.5)
             assert h * w == z_q.shape[1], 'Invalid sequence length'
             z_q = rearrange(z_q, 'b (h w) c -> b c h w', h=h)
         return z_q
@@ -216,7 +217,7 @@ class BinarySphericalQuantizer(nn.Module):
         q_scale = 1. / (self.embed_dim ** 0.5) if self.l2_norm else 1.
         z_q = z_q * q_scale
         if self.input_format == 'bchw':
-            h, w = int(z_q.shape[1] ** 0.5)
+            h = w = int(z_q.shape[1] ** 0.5)
             assert h * w == z_q.shape[1], 'Invalid sequence length'
             z_q = rearrange(z_q, 'b (h w) c -> b c h w', h=h)
         return z_q
@@ -518,7 +519,7 @@ class FixedEmbedding(nn.Module):
         super(FixedEmbedding, self).__init__()
 
         w = torch.zeros(c_in, d_model).float()
-        w.require_grad = False
+        w.requires_grad = False
 
         position = torch.arange(0, c_in).float().unsqueeze(1)
         div_term = (torch.arange(0, d_model, 2).float() * -(math.log(10000.0) / d_model)).exp()
