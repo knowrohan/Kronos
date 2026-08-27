@@ -344,12 +344,21 @@ def top_k_top_p_filtering(
         Make sure we keep at least min_tokens_to_keep per batch example in the output
     From: https://gist.github.com/thomwolf/1a5a29f6962089e871b94cbd09daf317
     """
+    # Three defects in the original, all fixed here:
+    #   1. the top-k branch `return`ed, so passing top_k AND top_p silently applied only
+    #      top-k -- the nucleus argument was accepted and then ignored;
+    #   2. with top_k == 0 and top_p >= 1.0 neither branch returned, so the function
+    #      handed back None. Only the guard in sample_from_logits kept that off the
+    #      hot path, and the function is public;
+    #   3. the writes were in-place on the caller's tensor.
+    # Callers that pass only one filter are numerically unaffected.
+    logits = logits.clone()
+
     if top_k > 0:
         top_k = min(max(top_k, min_tokens_to_keep), logits.size(-1))  # Safety check
         # Remove all tokens with a probability less than the last token of the top-k
         indices_to_remove = logits < torch.topk(logits, top_k)[0][..., -1, None]
         logits[indices_to_remove] = filter_value
-        return logits
 
     if top_p < 1.0:
         sorted_logits, sorted_indices = torch.sort(logits, descending=True)
@@ -367,7 +376,8 @@ def top_k_top_p_filtering(
         # scatter sorted tensors to original indexing
         indices_to_remove = sorted_indices_to_remove.scatter(1, sorted_indices, sorted_indices_to_remove)
         logits[indices_to_remove] = filter_value
-        return logits
+
+    return logits
 
 
 def sample_from_logits(logits, temperature=1.0, top_k=None, top_p=None, sample_logits=True):
