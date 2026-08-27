@@ -74,3 +74,10 @@ venv.bak/
 temp/
 tmp/
 .python-version
+
+# Research harness: track the code, never the outputs or the market data.
+# bench/out is 861 MB of parquet and JSON; data/ is 192 MB of fetched OHLCV.
+# Both are reproducible from the scripts -- run_all.sh for the equity study,
+# bench/btc/queue.sh for the crypto one.
+bench/out/
+data/
