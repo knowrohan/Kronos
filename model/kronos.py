@@ -372,9 +372,15 @@ def top_k_top_p_filtering(
 
 def sample_from_logits(logits, temperature=1.0, top_k=None, top_p=None, sample_logits=True):
     logits = logits / temperature
-    if top_k is not None or top_p is not None:
-        if top_k > 0 or top_p < 1.0:
-            logits = top_k_top_p_filtering(logits, top_k=top_k, top_p=top_p)
+    # Normalize optional filtering parameters. Leaving one of them unset (None)
+    # while passing the other (e.g. sample_from_logits(logits, top_p=0.9)) would
+    # otherwise raise `TypeError: '>' not supported between 'NoneType' and 'int'`
+    # in the comparison below, and could also pass None down to
+    # top_k_top_p_filtering.
+    top_k = 0 if top_k is None else top_k
+    top_p = 1.0 if top_p is None else top_p
+    if top_k > 0 or top_p < 1.0:
+        logits = top_k_top_p_filtering(logits, top_k=top_k, top_p=top_p)
 
     probs = F.softmax(logits, dim=-1)
 
