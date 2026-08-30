@@ -1,0 +1,192 @@
+{
+  "tri_levels": [
+    {
+      "date": "2023-08-01",
+      "nifty50_tri": 28500,
+      "nifty50_pri": 19733.55,
+      "tri_is_estimate": true,
+      "source": "PRI exact (Yahoo ^NSEI). TRI back-discounted from 2026-08-25 level via Kotak Nifty 50 Index Fund benchmark 3Y CAGR 9.05% as of 2026-07-31 (kotakmf.com)."
+    },
+    {
+      "date": "2024-08-01",
+      "nifty50_tri": 35800,
+      "nifty50_pri": 25010.6,
+      "tri_is_estimate": true,
+      "source": "PRI from press (Nifty first close above 25,000). TRI interpolated; low confidence."
+    },
+    {
+      "date": "2025-08-01",
+      "nifty50_tri": 36950,
+      "nifty50_pri": 24565.35,
+      "tri_is_estimate": true,
+      "source": "PRI exact (indiainfoline weekly). TRI back-discounted using investing.com 1Y TRI change -0.6121% (as of 2026-08-27) cross-checked with Kotak 1Y benchmark -0.26% (2026-07-31)."
+    },
+    {
+      "date": "2026-08-25",
+      "nifty50_tri": 36965.04,
+      "nifty50_pri": 24334.55,
+      "tri_is_estimate": false,
+      "source": "https://www.investing.com/indices/nifty-total-returns-historical-data ; https://www.investing.com/indices/s-p-cnx-nifty-historical-data (exact closes)."
+    }
+  ],
+  "tri_api_hint": {
+    "method": "POST",
+    "url": "https://www.niftyindices.com/Backpage.aspx/getTotalReturnIndexString",
+    "body": {
+      "cinfo": "{'name':'NIFTY 50','startDate':'DD-MMM-YYYY','endDate':'DD-MMM-YYYY','indexName':'NIFTY 50'}"
+    },
+    "note": "unofficial; needs browser UA; use to replace the estimated levels"
+  },
+  "implied_dividend_carry_pct_per_yr": {
+    "value": 0.7,
+    "note": "single noisy point: TRI 1Y -0.61% vs PRI 1Y -1.33% (mismatched dates); long-run NIFTY 50 yield ~1.1-1.5%"
+  },
+  "trackers": [
+    {
+      "name": "Nippon India ETF Nifty 50 BeES",
+      "ticker": "NIFTYBEES",
+      "type": "ETF",
+      "ter_pct": 0.04,
+      "tracking_diff_1y_pct": -0.4,
+      "tracking_diff_3y_pct": -0.05,
+      "aum_cr": 66777,
+      "tracking_error_pct": 0.02,
+      "source": "groww.in ; valueresearchonline.com (derived TD, indicative)"
+    },
+    {
+      "name": "SBI Nifty 50 ETF",
+      "ticker": "SETFNIF50",
+      "type": "ETF",
+      "ter_pct": 0.04,
+      "tracking_diff_1y_pct": 0.11,
+      "tracking_diff_3y_pct": -0.05,
+      "aum_cr": 216008.85,
+      "source": "tickertape.in (AUM 2026-08-10; EPFO vehicle)"
+    },
+    {
+      "name": "ICICI Prudential Nifty 50 ETF",
+      "ticker": "NIFTYIETF",
+      "type": "ETF",
+      "ter_pct": 0.03,
+      "tracking_diff_1y_pct": 0.16,
+      "tracking_diff_3y_pct": -0.05,
+      "aum_cr": 42099.54,
+      "source": "tickertape.in"
+    },
+    {
+      "name": "UTI Nifty 50 ETF",
+      "ticker": "UTINIFTETF",
+      "type": "ETF",
+      "ter_pct": 0.05,
+      "tracking_diff_1y_pct": null,
+      "tracking_diff_3y_pct": null,
+      "aum_cr": 73422.71,
+      "source": "utimf.com (403 on TD)"
+    },
+    {
+      "name": "Kotak Nifty 50 Index Fund Direct Growth",
+      "type": "index_fund",
+      "ter_pct": 0.07,
+      "tracking_diff_1y_pct": -0.11,
+      "tracking_diff_3y_pct": -0.3,
+      "aum_cr": 1172,
+      "fund_1y_pct": -0.37,
+      "bench_1y_pct": -0.26,
+      "fund_3y_cagr_pct": 8.75,
+      "bench_3y_cagr_pct": 9.05,
+      "as_of": "2026-07-31",
+      "source": "https://www.kotakmf.com/mutual-funds/passive-funds/kotak-nifty-50-index-fund/dir-g (cleanest same-date disclosure)"
+    },
+    {
+      "name": "UTI Nifty 50 Index Fund Direct",
+      "type": "index_fund",
+      "ter_pct": 0.18,
+      "aum_cr": 29603,
+      "source": "valueresearchonline.com (1Y figure looked inconsistent; unverified)"
+    }
+  ],
+  "tax": [
+    {
+      "item": "LTCG equity >12m",
+      "rate": "12.5% above Rs 1.25 lakh/FY exemption (transfers on/after 2024-07-23)",
+      "section": "s.112A as amended by Finance (No.2) Act 2024",
+      "source": "https://tax2win.in/guide/section-112a-income-tax-ltcg-exemption"
+    },
+    {
+      "item": "STCG equity <=12m",
+      "rate": "20% flat",
+      "section": "s.111A as amended by Finance (No.2) Act 2024",
+      "source": "https://www.finnovate.in/learn/blog/mutual-fund-taxation-india-fy-2025-26"
+    },
+    {
+      "item": "Budget 2025 / Budget 2026",
+      "rate": "no change to 12.5%/20%/Rs 1.25 lakh; Budget 2026 only raised F&O STT",
+      "section": "ss.111A/112A unchanged",
+      "source": "https://www.tatamutualfund.com/blogs/post-budget-2026-new-tax-map-equity-investors ; https://www.icicidirect.com/futures-and-options/articles/stt-changes-in-budget-2026-what-f-o-traders-need-to-know"
+    }
+  ],
+  "cash_costs": [
+    {
+      "item": "STT delivery",
+      "rate": "0.1% buy + 0.1% sell (unchanged by Budget 2026)",
+      "source": "https://zerodha.com/charges/",
+      "as_of": "2026-08"
+    },
+    {
+      "item": "NSE exchange txn charge cash",
+      "rate": "0.00297% (SEBI true-to-label Oct-2024 reporting) vs 0.00307% (Zerodha live page) -- costs.py uses 0.00307% per NSE/FA/73061 eff 2026-03-01",
+      "source": "https://zerodha.com/charges/ ; bajajbroking.in",
+      "as_of": "2026-08"
+    },
+    {
+      "item": "SEBI fee",
+      "rate": "Rs 10/crore + 18% GST",
+      "source": "https://zerodha.com/charges/",
+      "as_of": "2026-08"
+    },
+    {
+      "item": "Stamp duty",
+      "rate": "0.015% buy side",
+      "source": "https://zerodha.com/charges/",
+      "as_of": "2026-08"
+    },
+    {
+      "item": "DP charge per scrip sold",
+      "rate": "Rs 15.34 incl GST (Rs 3.5 CDSL + Rs 9.5 broker + GST)",
+      "source": "https://zerodha.com/charges/",
+      "as_of": "2026-08"
+    },
+    {
+      "item": "GST",
+      "rate": "18% on brokerage+SEBI+exchange; zero brokerage on CNC",
+      "source": "https://zerodha.com/charges/",
+      "as_of": "2026-08"
+    }
+  ],
+  "market_structure": [
+    {
+      "item": "T+0 settlement",
+      "status": "optional, parallel to T+1; top-500 stocks; not universal across brokers as of 2026-08",
+      "source": "https://www.business-standard.com/markets/capital-market-news/sebi-widens-scope-of-t-0-settlement-to-top-500-stocks-124121000906_1.html"
+    },
+    {
+      "item": "Pre-open call auction",
+      "status": "09:00-09:08 order collection (random close 09:07-09:08), matching at equilibrium price, normal market 09:15; a plain market order in pre-open is functionally market-on-open",
+      "source": "https://www.nseindia.com/static/products-services/equity-market-pre-open"
+    },
+    {
+      "item": "Budget 2026 STT",
+      "status": "futures 0.02%->0.05%, options premium 0.10%->0.15% from 2026-04-01; cash delivery unchanged",
+      "source": "https://www.icicidirect.com/futures-and-options/articles/stt-changes-in-budget-2026-what-f-o-traders-need-to-know"
+    }
+  ],
+  "caveats": [
+    "niftyindices.com unreachable in-session; 3 of 4 TRI levels are ESTIMATES (error plausibly several hundred to ~1000 points). Use the API hint or NIFTYBEES adj close as the purchasable benchmark.",
+    "Tracking differences are derived cross-source, +/-0.2-0.3 pp.",
+    "TER varies 0.01-0.02 pp across providers."
+  ],
+  "_provenance": {
+    "collected_by": "claude sonnet research agent, web search",
+    "collected_on": "2026-08-29"
+  }
+}

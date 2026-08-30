@@ -42,7 +42,7 @@ from torch.utils.data import DataLoader
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, ROOT)
-from bench.nse.common import OUT_NSE, PROCESSED, load_kronos, set_seed, sidecar  # noqa: E402
+from bench.nse.common import MODEL_REPO, OUT_NSE, PROCESSED, load_kronos, set_seed, sidecar  # noqa: E402
 
 
 def make_dataset(data_type: str, dataset_path: str, n_iter: int | None):
@@ -235,7 +235,9 @@ def main() -> None:
             "compute-limited and a longer schedule is untested")
     with open(os.path.join(args.out_dir, "train_summary.json"), "w") as f:
         json.dump(summary, f, indent=2)
-    sidecar(os.path.join(args.out_dir, "train_mps_meta.json"), vars(args), extra=summary)
+    # the finetune starts from load_kronos()'s default checkpoint, so it names it (common.py F11).
+    sidecar(os.path.join(args.out_dir, "train_mps_meta.json"),
+            {**vars(args), "model_repo": MODEL_REPO}, extra=summary)
     print(json.dumps(summary, indent=2))
 
 

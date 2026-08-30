@@ -22,7 +22,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, ROOT)
 
-from bench.nse.common import OUT_NSE, load_kronos, set_seed, sidecar  # noqa: E402
+from bench.nse.common import MODEL_REPO, OUT_NSE, load_kronos, set_seed, sidecar  # noqa: E402
 from model.kronos import auto_regressive_inference, calc_time_stamps  # noqa: E402
 
 FEATS = ["open", "high", "low", "close", "volume", "amount"]
@@ -201,7 +201,8 @@ def main() -> None:
 
     with open(args.out, "w") as f:
         json.dump(res, f, indent=2)
-    sidecar(args.out.replace(".json", "_meta.json"), vars(args))
+    # this script loads load_kronos()'s default checkpoint, so it names it (common.py F11).
+    sidecar(args.out.replace(".json", "_meta.json"), {**vars(args), "model_repo": MODEL_REPO})
     print(json.dumps(res, indent=2))
     print(f"\n-> {args.out}")
 

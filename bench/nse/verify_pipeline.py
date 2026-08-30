@@ -26,7 +26,8 @@ import torch
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, ROOT)
-from bench.nse.common import DATA_NSE, OUT_NSE, PROCESSED, load_kronos, set_seed, sidecar  # noqa: E402
+from bench.nse.common import (DATA_NSE, MODEL_REPO, OUT_NSE, PROCESSED,  # noqa: E402
+                              load_kronos, set_seed, sidecar)
 
 RESULTS: dict = {}
 
@@ -273,7 +274,9 @@ def main() -> None:
     out = os.path.join(OUT_NSE, "verify_pipeline.json")
     with open(out, "w") as f:
         json.dump(RESULTS, f, indent=2, default=str)
-    sidecar(out.replace(".json", "_meta.json"), {})
+    # sidecar() only stamps a checkpoint the caller names (common.py F11); this script loads
+    # load_kronos()'s default, so it names it.
+    sidecar(out.replace(".json", "_meta.json"), {"model_repo": MODEL_REPO})
     n_pass = sum(1 for v in RESULTS.values() if v.get("pass"))
     print(f"\n{n_pass}/{len(RESULTS)} checks passed -> {out}")
 

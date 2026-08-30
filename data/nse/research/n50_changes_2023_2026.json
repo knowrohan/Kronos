@@ -1,0 +1,208 @@
+{
+  "current_constituents": {
+    "as_of": "2026-08-28",
+    "source": "https://www.smart-investing.in/indices-bse-nse.php?index=NIFTY (cross-checked vs Wikipedia NIFTY 50 2025-12-08 + zero-churn Mar-2026 review)",
+    "symbols": [
+      "ADANIENT",
+      "ADANIPORTS",
+      "APOLLOHOSP",
+      "ASIANPAINT",
+      "AXISBANK",
+      "BAJAJ-AUTO",
+      "BAJFINANCE",
+      "BAJAJFINSV",
+      "BEL",
+      "BHARTIARTL",
+      "CIPLA",
+      "COALINDIA",
+      "DRREDDY",
+      "EICHERMOT",
+      "ETERNAL",
+      "GRASIM",
+      "HCLTECH",
+      "HDFCBANK",
+      "HDFCLIFE",
+      "HINDALCO",
+      "HINDUNILVR",
+      "ICICIBANK",
+      "INDIGO",
+      "INFY",
+      "ITC",
+      "JIOFIN",
+      "JSWSTEEL",
+      "KOTAKBANK",
+      "LT",
+      "M&M",
+      "MARUTI",
+      "MAXHEALTH",
+      "NESTLEIND",
+      "NTPC",
+      "ONGC",
+      "POWERGRID",
+      "RELIANCE",
+      "SBILIFE",
+      "SHRIRAMFIN",
+      "SBIN",
+      "SUNPHARMA",
+      "TCS",
+      "TATACONSUM",
+      "TMPV",
+      "TATASTEEL",
+      "TECHM",
+      "TITAN",
+      "TRENT",
+      "ULTRACEMCO",
+      "WIPRO"
+    ]
+  },
+  "changes": [
+    {
+      "effective_date": "2023-07-13",
+      "added": [
+        "LTIM"
+      ],
+      "removed": [
+        "HDFC"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs04072023.pdf",
+      "verified": true,
+      "note": "Ad-hoc: HDFC Ltd merged into HDFC Bank; LTIMindtree replacement. Effective from close of 2023-07-12."
+    },
+    {
+      "effective_date": "2023-07-20",
+      "added": [
+        "JIOFIN"
+      ],
+      "removed": [],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs17072023.pdf",
+      "verified": true,
+      "note": "Ad-hoc: JIOFIN temporary 51st constituent after demerger from RELIANCE, effective close of 2023-07-19."
+    },
+    {
+      "effective_date": "2023-09-07",
+      "added": [],
+      "removed": [
+        "JIOFIN"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs05092023.pdf",
+      "verified": true,
+      "note": "Ad-hoc: JIOFIN excluded after failing price band two consecutive days (Sep 4-5). Effective close of 2023-09-06; index back to 50."
+    },
+    {
+      "effective_date": "2023-09-29",
+      "added": [],
+      "removed": [],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs15092023.pdf",
+      "verified": true,
+      "note": "Semi-annual review, zero churn in NIFTY 50."
+    },
+    {
+      "effective_date": "2024-03-28",
+      "added": [
+        "SHRIRAMFIN"
+      ],
+      "removed": [
+        "UPL"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs28022024.pdf",
+      "verified": true,
+      "note": "Semi-annual review."
+    },
+    {
+      "effective_date": "2024-09-30",
+      "added": [
+        "TRENT",
+        "BEL"
+      ],
+      "removed": [
+        "DIVISLAB",
+        "LTIM"
+      ],
+      "source": "https://nsearchives.nseindia.com/web/sites/default/files/2024-09/ind_prs23092024_2.pdf",
+      "verified": true,
+      "note": "Semi-annual review (announced 2024-09-23)."
+    },
+    {
+      "effective_date": "2025-03-28",
+      "added": [
+        "ZOMATO",
+        "JIOFIN"
+      ],
+      "removed": [
+        "BRITANNIA",
+        "BPCL"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs21022025.pdf",
+      "verified": true,
+      "note": "Semi-annual review. ZOMATO renamed ETERNAL 2025-04-09."
+    },
+    {
+      "effective_date": "2025-09-30",
+      "added": [
+        "INDIGO",
+        "MAXHEALTH"
+      ],
+      "removed": [
+        "HEROMOTOCO",
+        "INDUSINDBK"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs22082025.pdf",
+      "verified": true,
+      "note": "Semi-annual review; effective close of 2025-09-29."
+    },
+    {
+      "effective_date": "2025-10-14",
+      "added": [
+        "DUMMYTATAM"
+      ],
+      "removed": [],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs07102025.pdf",
+      "verified": true,
+      "note": "Tata Motors CV demerger placeholder at zero price, no divisor adjustment. TATAMOTORS (PV) retained, renamed TMPV 2025-10-24."
+    },
+    {
+      "effective_date": "2025-11-17",
+      "added": [],
+      "removed": [
+        "TMCV"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs13112025.pdf",
+      "verified": true,
+      "note": "TMCV (listed 2025-11-12) excluded after failing price band; effective close of 2025-11-14."
+    },
+    {
+      "effective_date": "2026-03-30",
+      "added": [],
+      "removed": [],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs16022026_1.pdf",
+      "verified": true,
+      "note": "Semi-annual review, zero churn in NIFTY 50."
+    }
+  ],
+  "renames": [
+    {
+      "old": "ZOMATO",
+      "new": "ETERNAL",
+      "date": "2025-04-09",
+      "source": "https://nsearchives.nseindia.com/content/circulars/CML67420.pdf"
+    },
+    {
+      "old": "TATAMOTORS",
+      "new": "TMPV",
+      "date": "2025-10-24",
+      "source": "https://hdfcsky.com/news/tata-motors-demerger-tata-motors-passenger-vehicles-begins-trading-under-new-symbol-tmpv"
+    }
+  ],
+  "caveats": [
+    "JIOFIN has two episodes: 2023-07-20..2023-09-06 temporary, and permanent from 2025-03-28.",
+    "DUMMYTATAM (2025-10-14..2025-11-14) is a zero-price placeholder: exclude from any tradable universe; treat index as 50 real names throughout.",
+    "BSE Ltd replaces WIPRO effective 2026-09-30 (announced Aug 2026) - outside window.",
+    "Several niftyindices PDFs timed out on direct fetch; dates corroborated via secondary press. Re-fetch PDFs for machine verification.",
+    "LTIMindtree ticker is LTIM."
+  ],
+  "_provenance": {
+    "collected_by": "claude sonnet research agent, web search",
+    "collected_on": "2026-08-29",
+    "note": "secondary-source aggregation; verify primary before live use"
+  }
+}

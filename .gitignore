@@ -80,4 +80,10 @@ tmp/
 # Both are reproducible from the scripts -- run_all.sh for the equity study,
 # bench/btc/queue.sh for the crypto one.
 bench/out/
-data/
+# data/ stays untracked except the small research JSONs the NIFTY 50 round cites.
+data/*
+!data/nse/
+data/nse/*
+!data/nse/research/
+data/nse/research/*
+!data/nse/research/*.json

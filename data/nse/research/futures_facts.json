@@ -1,0 +1,138 @@
+{
+  "facts": [
+    {
+      "topic": "SEBI minimum contract value - INDEX derivatives",
+      "value": "Raised from Rs 5-10 lakh band to: not less than Rs 15 lakh at introduction, lot size reviewed so contract value stays within Rs 15-20 lakh. Applies to index futures/options only, effective 2024-11-20.",
+      "source": "https://zerodha.com/z-connect/business-updates/sebis-new-rules-for-index-derivatives-heres-whats-changing ; https://nsearchives.nseindia.com/content/circulars/FAOP67372.pdf",
+      "as_of": "2024-11-20",
+      "confidence": "high"
+    },
+    {
+      "topic": "SEBI minimum contract value - STOCK derivatives, unchanged",
+      "value": "Single-stock futures/options remain under the Oct-2015 framework: lot size fixed so contract value on day of review is within Rs 5 lakh - Rs 10 lakh. No 2025/2026 revision found.",
+      "source": "https://www.business-standard.com/article/pti-stories/sebi-raises-equity-derivative-lot-size-to-rs-5-lakh-115071300904_1.html ; https://www.nseindia.com/static/products-services/equity-derivatives-selection-criteria",
+      "as_of": "2026-08-29",
+      "confidence": "medium-high"
+    },
+    {
+      "topic": "Representative NIFTY 50 stock futures lot sizes and approx contract values (Aug 2026)",
+      "value": "RELIANCE lot 500 ~Rs 6.65 lakh; HDFCBANK lot 650 ~Rs 4.8 lakh; ICICIBANK lot 700 ~Rs 9.9 lakh; INFY lot 400 ~Rs 4.2 lakh; TCS lot 225 ~Rs 5.5 lakh; ITC lot 1725 ~Rs 4.65 lakh; SBIN lot 750 ~Rs 7.9 lakh; BHARTIARTL lot 475 ~Rs 9.5 lakh; LT lot 175 ~Rs 7.2 lakh; TMPV (ex-TATAMOTORS PV) lot 1600 ~Rs 5.1-5.6 lakh.",
+      "lots": {
+        "RELIANCE": 500,
+        "HDFCBANK": 650,
+        "ICICIBANK": 700,
+        "INFY": 400,
+        "TCS": 225,
+        "ITC": 1725,
+        "SBIN": 750,
+        "BHARTIARTL": 475,
+        "LT": 175,
+        "TMPV": 1600
+      },
+      "source": "Aggregated broker derivative pages (5paisa, Angel One, ICICI Direct, Groww, Dhan) Aug 2026; Tata Motors demerger: https://www.business-standard.com/markets/news/tata-motors-demerger-impact-changes-in-futures-options-lot-size-open-interest-strikes-prices-explained-125110600114_1.html",
+      "as_of": "2026-08-29",
+      "confidence": "medium"
+    },
+    {
+      "topic": "SPAN + exposure margin, stock futures",
+      "value": "Regulatory floor: SPAN scan range min 10% of contract value; exposure margin = max(3.5%, 1.5 sd of 6-month log returns). Broker-quoted NRML totals for large caps typically 17-26% of contract value (range 14-35%); some Sept-2026 Zerodha snapshots for RELIANCE/HDFCBANK/ICICIBANK showed 33-41% (unverified JS-rendered fetch).",
+      "source": "https://zerodha.com/margin-calculator/Futures/ ; https://support.zerodha.com/category/trading-and-markets/general-kite/funds/articles/what-is-span-and-exposure-margin",
+      "as_of": "2026-08-29",
+      "confidence": "medium"
+    },
+    {
+      "topic": "STT on stock futures",
+      "value": "0.02% sell-side from 2024-10-01; Union Budget 2026 raised it to 0.05% sell-side effective 2026-04-01 (CURRENT). Options STT 0.15%. No STT on futures buy side.",
+      "rate_sell": 0.0005,
+      "rate_buy": 0.0,
+      "source": "https://zerodha.com/charges/ ; https://inc42.com/features/stt-shock-at-budget-2026-pain-for-zerodha-groww-and-angel-one/ ; https://www.vrdnation.com/stt-cash-fno-intraday/",
+      "as_of": "2026-04-01",
+      "confidence": "high"
+    },
+    {
+      "topic": "Exchange txn charge, SEBI fee, stamp duty, GST, brokerage on futures",
+      "value": "NSE equity futures exchange transaction charge 0.00173% of turnover (one Zerodha page still shows 0.00183%); SEBI fee Rs 10/crore (0.0001%) both sides; stamp duty 0.002% buy side only; GST 18% on brokerage + SEBI + exchange charges (not on STT/stamp); Zerodha brokerage min(0.03%, Rs 20) per executed order.",
+      "exchange_txn": 1.73e-05,
+      "sebi_fee": 1e-06,
+      "stamp_buy": 2e-05,
+      "gst": 0.18,
+      "brokerage_per_order_rs": 20.0,
+      "brokerage_rate": 0.0003,
+      "source": "https://zerodha.com/charges/ ; https://support.zerodha.com/category/account-opening/resident-individual/ri-charges/articles/exchange-transaction-charges",
+      "as_of": "2026-08-29",
+      "confidence": "high (medium on 0.00173 vs 0.00183)"
+    },
+    {
+      "topic": "Cost of carry / basis / roll",
+      "value": "NIFTY futures premium ~Rs 150 over spot ~24,335 on 2026-08-25 (~0.6%/month); monthly premiums Jan-2025 87 pts, May-2025 34 pts, Jan-2026 196 pts; market-wide monthly rollover cost ~45-65 bps observed. No per-stock dataset found; index proxy only.",
+      "roll_cost_bps_per_month_range": [
+        45,
+        65
+      ],
+      "source": "https://www.business-standard.com/amp/markets/capital-market-news/nifty-january-futures-trade-at-premium-125010800819_1.html ; https://www.business-standard.com/amp/markets/capital-market-news/nifty-may-futures-trade-at-premium-125052701074_1.html",
+      "as_of": "2026-08-25",
+      "confidence": "low-medium"
+    },
+    {
+      "topic": "Physical settlement",
+      "value": "All stock F&O compulsorily physically settled since Oct-2019 expiry (SEBI 2018-04-11 circular). ITM at expiry -> delivery/receipt of shares.",
+      "source": "https://zerodha.com/varsity/chapter/quick-note-on-physical-settlement-2/ ; https://support.zerodha.com/category/trading-and-markets/trading-faqs/f-otrading/articles/policy-on-physical-settlement",
+      "as_of": "2026-08-29",
+      "confidence": "high"
+    },
+    {
+      "topic": "Delivery margin ramp before expiry",
+      "value": "Additional physical-delivery margin on ITM positions: E-4 10%, E-3 25%, E-2 45%, E-1 70%, E 100% of (VaR+ELM+adhoc) x qty x price. SEBI Feb-2026 circular withdrew calendar-spread margin benefit on expiry day for single-stock derivatives.",
+      "source": "https://www.icicidirect.com/faqs/fno/margin-requirement-for-physical-settlement ; https://www.businesstoday.in/markets/story/sebi-ends-expiry-day-margin-benefit-for-single-stock-derivatives-to-curb-risk-514876-2026-02-05",
+      "as_of": "2026-02-05",
+      "confidence": "high/medium"
+    },
+    {
+      "topic": "Tax on stock futures P&L",
+      "value": "s.43(5) proviso (d): eligible exchange-traded derivative transactions are not speculative -> non-speculative business income; losses set off against other heads except salary, carry-forward 8 years.",
+      "source": "https://indiankanoon.org/doc/967611/",
+      "as_of": "2026-08-29",
+      "confidence": "high"
+    },
+    {
+      "topic": "SLB for retail shorting",
+      "value": "Zerodha SLB: Series B (non-F&O) only; borrow min 500 shares; lend min Rs 1 lakh per security; monthly contracts; lending fee 0.5-10% annualised market-determined; Zerodha takes 20% of lending fee + GST; full-value collateral for borrowing. For NIFTY 50 names futures are the cheaper short route; SLB is a fallback.",
+      "source": "https://support.zerodha.com/category/trading-and-markets/trading-faqs/securities-lending-and-borrowing/articles/what-is-slb-and-how-to-avail",
+      "as_of": "2026-08-29",
+      "confidence": "medium-high"
+    }
+  ],
+  "worked_example_round_trip_bps": {
+    "assumptions": "One stock-futures lot, contract value Rs 15,00,000 both legs, Zerodha, rates as of Aug 2026 (post 2026-04-01 STT hike). Excludes slippage, margin financing, roll.",
+    "buy_leg": {
+      "brokerage_rs": 20.0,
+      "exchange_transaction_charge_rs": 25.95,
+      "sebi_turnover_fee_rs": 1.5,
+      "stt_rs": 0.0,
+      "stamp_duty_rs": 30.0
+    },
+    "sell_leg": {
+      "brokerage_rs": 20.0,
+      "exchange_transaction_charge_rs": 25.95,
+      "sebi_turnover_fee_rs": 1.5,
+      "stt_rs": 750.0,
+      "stamp_duty_rs": 0.0
+    },
+    "gst_rs": 17.08,
+    "total_round_trip_cost_rs": 891.98,
+    "round_trip_bps_on_single_lot_notional_15L": 5.95
+  },
+  "caveats": [
+    "Live prices/margins change daily; lot sizes revised periodically.",
+    "Exchange txn charge 0.00173% vs 0.00183% ambiguity is immaterial (<Rs 2/lot).",
+    "No per-stock basis/roll dataset; index proxy is the weakest item.",
+    "TATAMOTORS split into TMPV/TMCV on 2025-10-01; F&O relaunched 2025-10-14.",
+    "Feb-2026 calendar-spread circular number not independently confirmed.",
+    "Margin snapshots 33-41% may be an artifact of a non-JS fetch; verify live."
+  ],
+  "_provenance": {
+    "collected_by": "claude sonnet research agent, web search",
+    "collected_on": "2026-08-29",
+    "note": "secondary-source aggregation; verify primary before live use"
+  }
+}

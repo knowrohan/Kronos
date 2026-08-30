@@ -75,15 +75,24 @@ def sidecar(path: str, args: dict, extra: dict | None = None) -> None:
     # every finetuned run's sidecar claim it was Kronos-base at the pinned revision --
     # recoverable from args.model_path, but a provenance record that needs cross-checking
     # against the thing it is supposed to certify is not doing its job.
+    # F11 (NIFTY50_PLAN sec.1): the fallback used to be `args.get("model_repo") or MODEL_REPO`,
+    # so a caller that never loaded a Kronos checkpoint at all -- backtest.py, costs work, the
+    # membership reconstruction, every reservoir and free-feature arm -- got a sidecar asserting
+    # Kronos-base at a pinned revision. A provenance record that asserts a model the run never
+    # touched is worse than no record. The rule now: stamp a repo only when the caller named one.
+    # A caller that DOES load `common.load_kronos()`'s default must pass model_repo=MODEL_REPO.
     mp, tp = args.get("model_path"), args.get("tokenizer_path")
-    mr = args.get("model_repo") or MODEL_REPO
+    mr = args.get("model_repo")
     if mp:
         rec["model_repo"] = None
         rec["model_path"] = str(mp)
         rec["model_revision"] = None      # a local checkpoint has no hub revision
-    else:
+    elif mr:
         rec["model_repo"] = mr
         rec["model_revision"] = MODEL_REVISIONS.get(mr, MODEL_REVISION)
+    else:
+        rec["model_repo"] = None
+        rec["model_revision"] = None
     if tp:
         rec["tokenizer_repo"] = None
         rec["tokenizer_path"] = str(tp)

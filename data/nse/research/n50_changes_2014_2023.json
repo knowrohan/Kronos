@@ -1,0 +1,374 @@
+{
+  "changes": [
+    {
+      "effective_date": "2014-03-28",
+      "added": [
+        "TECHM",
+        "MCDOWELL-N"
+      ],
+      "removed": [
+        "RANBAXY",
+        "JPASSOCIAT"
+      ],
+      "source": "https://www.business-standard.com/article/pti-stories/ranbaxy-jp-associates-to-exit-nifty-from-mar-28-114022700872_1.html",
+      "verified": true,
+      "note": "Semi-annual. MCDOWELL-N renamed UNITDSPR 2024-06-07 (outside window)."
+    },
+    {
+      "effective_date": "2014-09-19",
+      "added": [
+        "ZEEL"
+      ],
+      "removed": [
+        "MCDOWELL-N"
+      ],
+      "source": "https://www.business-standard.com/amp/article/pti-stories/zee-entertainment-to-replace-usl-in-nifty-from-sep-19-114082100413_1.html",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2015-03-27",
+      "added": [
+        "IDEA",
+        "YESBANK"
+      ],
+      "removed": [
+        "DLF",
+        "JINDALSTEL"
+      ],
+      "source": "https://www.business-standard.com/amp/article/pti-stories/nifty-dlf-jspl-to-exit-from-mar-27-idea-yes-bank-to-enter-115022000819_1.html",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2015-05-29",
+      "added": [
+        "BOSCHLTD"
+      ],
+      "removed": [
+        "IDFC"
+      ],
+      "source": "https://www.business-standard.com/amp/article/pti-stories/idfc-to-exit-nifty-index-bosch-new-replacement-115042900965_1.html",
+      "verified": true,
+      "note": "Ad-hoc (IDFC restructuring)."
+    },
+    {
+      "effective_date": "2015-09-28",
+      "added": [
+        "ADANIPORTS"
+      ],
+      "removed": [
+        "NMDC"
+      ],
+      "source": "https://www.business-standard.com/article/pti-stories/adani-ports-to-replace-nmdc-on-nifty-115081201496_1.html",
+      "verified": true,
+      "note": "Some reports: effective close of 2015-09-24."
+    },
+    {
+      "effective_date": "2016-04-01",
+      "added": [
+        "AUROPHARMA",
+        "INFRATEL",
+        "EICHERMOT",
+        "TATAMTRDVR"
+      ],
+      "removed": [
+        "CAIRN",
+        "PNB",
+        "VEDL"
+      ],
+      "source": "https://www.business-standard.com/article/pti-stories/cairn-india-vedanta-pnb-to-exit-from-nifty-50-116022200928_1.html",
+      "verified": true,
+      "note": "51 securities / 50 companies (TATAMTRDVR extra line)."
+    },
+    {
+      "effective_date": "2016-09-30",
+      "added": [],
+      "removed": [],
+      "source": "https://www.business-standard.com/article/pti-stories/rcom-rec-to-move-out-from-nse-s-nifty-next-50-index-116081201647_1.html",
+      "verified": true,
+      "note": "Zero churn."
+    },
+    {
+      "effective_date": "2017-03-31",
+      "added": [
+        "IBULHSGFIN",
+        "IOC"
+      ],
+      "removed": [
+        "IDEA",
+        "BHEL"
+      ],
+      "source": "https://www.niftyindices.com/docs/default-source/press-release-upload/ind_prs16022017.pdf",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2017-05-26",
+      "added": [
+        "VEDL"
+      ],
+      "removed": [
+        "GRASIM"
+      ],
+      "source": "https://www.indiainfoline.com/article/news-top-story/vedanta-in-nifty50-vedanta-replaces-grasim-in-the-nifty-50-index-117052600180_1.html",
+      "verified": true,
+      "note": "Ad-hoc; secondary source."
+    },
+    {
+      "effective_date": "2017-09-29",
+      "added": [
+        "BAJFINANCE",
+        "HINDPETRO",
+        "UPL"
+      ],
+      "removed": [
+        "ACC",
+        "BANKBARODA",
+        "TATAPOWER",
+        "TATAMTRDVR"
+      ],
+      "source": "https://www.business-standard.com/amp/article/pti-stories/tata-power-tata-motors-dvr-to-move-out-of-nifty-50-117082801003_1.html",
+      "verified": true,
+      "note": "4 removed vs 3 added; back to 50 securities."
+    },
+    {
+      "effective_date": "2018-04-02",
+      "added": [
+        "BAJAJFINSV",
+        "GRASIM",
+        "TITAN"
+      ],
+      "removed": [
+        "AMBUJACEM",
+        "AUROPHARMA",
+        "BOSCHLTD"
+      ],
+      "source": "https://www.business-standard.com/amp/article/markets/bajaj-finserv-grasim-and-titan-to-be-part-of-nifty-50-index-from-april-2-118022101285_1.html",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2018-09-28",
+      "added": [
+        "JSWSTEEL"
+      ],
+      "removed": [
+        "LUPIN"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs28082018_1.pdf",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2019-03-29",
+      "added": [
+        "BRITANNIA"
+      ],
+      "removed": [
+        "HINDPETRO"
+      ],
+      "source": "https://www.business-standard.com/amp/article/pti-stories/britannia-to-replace-hindustan-petroleum-in-nifty-50-from-march-29-119022501239_1.html",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2019-09-27",
+      "added": [
+        "NESTLEIND"
+      ],
+      "removed": [
+        "IBULHSGFIN"
+      ],
+      "source": "https://www.business-standard.com/amp/article/pti-stories/nestle-india-to-replace-indiabulls-housing-in-nifty-50-from-sept-27-119082801129_1.html",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2020-03-19",
+      "added": [
+        "SHREECEM"
+      ],
+      "removed": [
+        "YESBANK"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs16032020.pdf",
+      "verified": true,
+      "note": "Accelerated from 2020-03-27 after RBI scheme; COVID deferment of other changes (ind_prs23032020)."
+    },
+    {
+      "effective_date": "2020-07-31",
+      "added": [
+        "HDFCLIFE"
+      ],
+      "removed": [
+        "VEDL"
+      ],
+      "source": "https://www.business-standard.com/article/markets/nse-expels-vendata-from-its-indices-ahead-of-possible-delisting-120070201548_1.html",
+      "verified": true,
+      "note": "Ad-hoc (Vedanta delisting attempt)."
+    },
+    {
+      "effective_date": "2020-09-25",
+      "added": [
+        "DIVISLAB",
+        "SBILIFE"
+      ],
+      "removed": [
+        "INFRATEL",
+        "ZEEL"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs20082020.pdf",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2021-03-31",
+      "added": [
+        "TATACONSUM"
+      ],
+      "removed": [
+        "GAIL"
+      ],
+      "source": "https://www.business-standard.com/amp/article/markets/tata-consumer-to-replace-gail-india-in-nifty-50-effective-march-31-121022301290_1.html",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2021-09-30",
+      "added": [],
+      "removed": [],
+      "source": "https://www.business-standard.com/amp/article/news-cm/bob-chola-fin-jspl-pi-ind-sail-to-enter-nifty-next-50-121082400479_1.html",
+      "verified": true,
+      "note": "Zero churn."
+    },
+    {
+      "effective_date": "2022-03-31",
+      "added": [
+        "APOLLOHOSP"
+      ],
+      "removed": [
+        "IOC"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs24022022_1.pdf",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2022-09-30",
+      "added": [
+        "ADANIENT"
+      ],
+      "removed": [
+        "SHREECEM"
+      ],
+      "source": "https://www.business-standard.com/amp/article/markets/adani-enterprises-enters-nifty-50-index-in-a-new-boost-for-gautam-adani-122090101270_1.html",
+      "verified": true,
+      "note": ""
+    },
+    {
+      "effective_date": "2023-03-31",
+      "added": [],
+      "removed": [],
+      "source": "https://www.business-standard.com/markets/news/nifty50-could-see-1-change-and-next50-7-during-march-rejig-shows-data-124012100342_1.html",
+      "verified": true,
+      "note": "Zero churn."
+    },
+    {
+      "effective_date": "2023-07-13",
+      "added": [
+        "LTIM"
+      ],
+      "removed": [
+        "HDFC"
+      ],
+      "source": "https://www.niftyindices.com/Press_Release/ind_prs04072023.pdf",
+      "verified": true,
+      "note": "HDFC merger; overlaps with n50_changes_2023_2026.json first entry."
+    }
+  ],
+  "press_release_urls": [
+    "https://www.niftyindices.com/docs/default-source/press-release-upload/ind_prs16022017.pdf",
+    "https://www.niftyindices.com/Press_Release/ind_prs28082018_1.pdf",
+    "https://www.niftyindices.com/Press_Release/ind_prs18022020.pdf",
+    "https://www.niftyindices.com/Press_Release/ind_prs16032020.pdf",
+    "https://www.niftyindices.com/Press_Release/ind_prs23032020.pdf",
+    "https://www.niftyindices.com/Press_Release/ind_prs20082020.pdf",
+    "https://www.niftyindices.com/Press_Release/ind_prs07092020.pdf",
+    "https://www.niftyindices.com/Press_Release/ind_prs20082019.pdf",
+    "https://www.niftyindices.com/Press_Release/ind_prs24022022_1.pdf",
+    "https://www.niftyindices.com/Press_Release/ind_prs04072023.pdf"
+  ],
+  "renames": [
+    {
+      "old": "SSLT",
+      "new": "VEDL",
+      "date": "2015-04-22"
+    },
+    {
+      "old": "INFRATEL",
+      "new": "INDUSTOWER",
+      "date": "2020-11-19"
+    },
+    {
+      "old": "MCDOWELL-N",
+      "new": "UNITDSPR",
+      "date": "2024-06-07",
+      "note": "outside window; 2014 history under MCDOWELL-N"
+    },
+    {
+      "old": "IBULHSGFIN",
+      "new": "SAMMAANCAP",
+      "date": "2024",
+      "note": "outside window"
+    }
+  ],
+  "delisted_or_data_risk": [
+    {
+      "symbol": "RANBAXY",
+      "reason": "merged into SUNPHARMA; ceased trading ~2015-04-06",
+      "date": "2015-04-06"
+    },
+    {
+      "symbol": "CAIRN",
+      "reason": "merged into VEDL; ceased ~2017-04-26",
+      "date": "2017-04-26"
+    },
+    {
+      "symbol": "HDFC",
+      "reason": "merged into HDFCBANK; ceased 2023-07-12 close",
+      "date": "2023-07-13"
+    },
+    {
+      "symbol": "INFRATEL",
+      "reason": "renamed INDUSTOWER 2020-11-19; stitch series",
+      "date": "2020-11-19"
+    },
+    {
+      "symbol": "TATAMTRDVR",
+      "reason": "DVR line; converted/delisted 2024-09-01 (outside window)",
+      "date": "2024-09-01"
+    },
+    {
+      "symbol": "YESBANK",
+      "reason": "RBI reconstruction 2020-03-05; real discontinuity",
+      "date": "2020-03-05"
+    },
+    {
+      "symbol": "JPASSOCIAT",
+      "reason": "distressed/thin; NCLT 2024",
+      "date": "2024"
+    }
+  ],
+  "caveats": [
+    "Effective date = first trading day after the March/September monthly F&O expiry, hence 19th-31st variation.",
+    "2014-2017 primary PDFs mostly not located; secondary press used (2+ sources each).",
+    "Aggregator tables (angelone/enrichmoney) contain known errors: Sep-2019/Sep-2020 merged; Jul-2023 add/remove swapped.",
+    "MAIN-SESSION FLAG: this agent's out-of-scope aside claiming Trent/BEL entered in Sep-2023 is WRONG per the 2023-2026 log (ind_prs15092023 = zero churn; Trent/BEL entered 2024-09-30). Ignore that aside.",
+    "TATAMTRDVR extra security line 2016-04-01..2017-09-29: index had 51 securities/50 companies; treat as 50 companies for a name-based universe (exclude DVR line or include as separate tradable line -- decide and record)."
+  ],
+  "_provenance": {
+    "collected_by": "claude sonnet research agent, web search",
+    "collected_on": "2026-08-29"
+  }
+}

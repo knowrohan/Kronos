@@ -26,7 +26,7 @@ import torch
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(os.path.dirname(HERE))
 sys.path.insert(0, ROOT)
-from bench.nse.common import load_kronos, set_seed, sidecar  # noqa: E402
+from bench.nse.common import MODEL_REPO, load_kronos, set_seed, sidecar  # noqa: E402
 from model.kronos import auto_regressive_inference  # noqa: E402
 
 FEATS = ["open", "high", "low", "close", "volume", "amount"]
@@ -150,7 +150,8 @@ def main() -> None:
     np.save(os.path.join(OUT, f"paths_{a.tag}.npy"),
             np.concatenate(path_store, axis=0))
     sidecar(os.path.join(OUT, f"signals_{a.tag}_meta.json"),
-            {**vars(a), "n_origins": len(origins), "n_bars": n,
+            {**vars(a), "model_repo": None if a.model_path else MODEL_REPO,
+             "n_origins": len(origins), "n_bars": n,
              "first": str(ts[0]), "last": str(ts[-1]),
              "runtime_sec": round(time.time() - t_start, 1)})
     print(f"wrote {out_sig}  ({len(rows)} rows, {time.time()-t_start:.0f}s)")
