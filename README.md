@@ -1,3 +1,11 @@
+> **About this fork.** This is Rohan Patil's fork of [shiyu-coder/Kronos](https://github.com/shiyu-coder/Kronos). It adds a pre-registered study that tests Kronos as a stock ranker on Indian equities (NIFTY 200 and NIFTY 50), after costs and taxes. The tests did not find a tradeable edge.
+>
+> - Study code, tests and notes: [`bench/nse/`](bench/nse/). Start with [`PREREG.md`](bench/nse/PREREG.md), the pre-registration, committed before any result was computed, and [`VERIFIED.md`](bench/nse/VERIFIED.md).
+> - Small fixes to the upstream model code (sampling, inference defaults, optional bf16) are in their own commits, marked `upstream:` or `fix(sampling):`.
+> - Write-up: [rohanpatil.ai/projects/p/12/](https://rohanpatil.ai/projects/p/12/)
+>
+> The original README follows.
+
 <div align="center">
   <h2><b>Kronos: A Foundation Model for the Language of Financial Markets </b></h2>
 </div>
